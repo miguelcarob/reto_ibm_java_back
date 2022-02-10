@@ -10,6 +10,8 @@ public interface UserCinemaRepository extends JpaRepository<UserCinema, Integer>
     Optional<UserCinema> findByUsernameUserCinema (String username);
     boolean existsByUsernameUserCinema (String username);
     boolean existsByEmailUserCinema(String email);
+    boolean existsByUsernameUserCinemaAndEmailUserCinemaAllIgnoreCase(String username,String  email);
+
 
     /**
      *

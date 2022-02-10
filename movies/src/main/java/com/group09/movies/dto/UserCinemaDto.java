@@ -1,13 +1,13 @@
 package com.group09.movies.dto;
 
-public class UserCinemaDto extends UserApp{
+public class UserCinemaDto extends UserAppDto {
 
 
     private String web_cinema;
     private String address_cinema;
     private String city_cinema;
 
-    public UserCinemaDto(UserApp u) {
+    public UserCinemaDto(UserAppDto u) {
         super(u.getUsernameUserCinema(), u.getNameUserCinema(), u.getSurnameUserCinema(), u.getEmailUserCinema());
     }
 

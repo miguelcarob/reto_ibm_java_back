@@ -2,8 +2,10 @@ package com.group09.movies.service.impl;
 
 
 import com.group09.movies.entity.Cinema;
+import com.group09.movies.entity.Subscriber;
 import com.group09.movies.entity.UserCinema;
 import com.group09.movies.repository.CinemaRepository;
+import com.group09.movies.repository.SubscriberRepository;
 import com.group09.movies.repository.UserCinemaRepository;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,10 @@ public class UserCinemaService {
     @Autowired
     CinemaRepository cinemaRepository;
 
+    @Autowired
+    SubscriberRepository subscriberRepository;
+
+
     public Optional<UserCinema> findByUsernameUserCinema(String username) {
         return userCinemaRepository.findByUsernameUserCinema(username);
     }
@@ -39,16 +45,33 @@ public class UserCinemaService {
         return userCinemaRepository.save(userCinema);
     }
 
-    public UserCinema unsubscribeUser(UserCinema userCinema){
-        userCinema.setStateUserCinema(0);
+    public UserCinema unsubscribeUser(int id) {
+        Optional<UserCinema> userCinema = userCinemaRepository.findById(id);
+        userCinema.get().setStateUserCinema(0);
+        return userCinemaRepository.save(userCinema.get());
+
+    }
+
+    public UserCinema editInformationRegular(UserCinema userCinema) {
         return userCinemaRepository.save(userCinema);
     }
-    public UserCinema editInformationRegular(UserCinema userCinema){
-        return  userCinemaRepository.save(userCinema);
-    }
-    public UserCinema editInformationCinema(UserCinema userCinema, Cinema cinema){
+
+    public UserCinema editInformationCinema(UserCinema userCinema, Cinema cinema) {
         cinemaRepository.save(cinema);
-        return  userCinemaRepository.save(userCinema);
+        return userCinemaRepository.save(userCinema);
+    }
+
+    public void createSubscriber(UserCinema user, Subscriber sub) {
+        UserCinema newUser = userCinemaRepository.save(user);
+        sub.setIdUserCinema(newUser);
+        subscriberRepository.save(sub);
+    }
+
+
+    public void createCinema(UserCinema user, Cinema cinema) {
+        UserCinema newUser = userCinemaRepository.save(user);
+        cinema.setIdUserCinema(newUser);
+        cinemaRepository.save(cinema);
     }
 
 

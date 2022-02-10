@@ -1,9 +1,9 @@
 package com.group09.movies.dto;
 
-public final class UserAdministrator extends  UserApp{
+public final class UserAdministratorDto extends UserAppDto {
 
 
-    public UserAdministrator(UserApp u) {
+    public UserAdministratorDto(UserAppDto u) {
         super(u.getUsernameUserCinema(), u.getNameUserCinema(), u.getSurnameUserCinema(), u.getEmailUserCinema());
     }
 }

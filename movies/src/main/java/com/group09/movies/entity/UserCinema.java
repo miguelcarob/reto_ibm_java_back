@@ -1,5 +1,7 @@
 package com.group09.movies.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,7 @@ public class UserCinema {
     private String usernameUserCinema;
 
     @Column(name = "password_user_cinema", length = 200)
+    @JsonIgnore
     private String passwordUserCinema;
 
     @Column(name = "name_user_cinema", length = 200)

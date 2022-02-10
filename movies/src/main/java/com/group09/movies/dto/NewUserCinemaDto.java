@@ -1,10 +1,9 @@
 package com.group09.movies.dto;
 
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-public class NewUserSubscriberDto {
+public class NewUserCinemaDto {
 
     @NotEmpty(message = "Es necesario colocar el usuario")
     private String usernameUserCinema;
@@ -20,6 +19,40 @@ public class NewUserSubscriberDto {
     @Email(message = "El Email no es valido")
     @NotEmpty(message = "Es necesario colocar el email ")
     private String emailUserCinema;
+
+
+    @NotEmpty(message = "Es necesario colocar el Sitio Web ")
+    private String web_cinema;
+
+    @NotEmpty(message = "Es necesario colocar la dirección ")
+    private String address_cinema;
+
+    @NotEmpty(message = "Es necesario colocar la Ciudad ")
+    private String city_cinema;
+
+    public String getWeb_cinema() {
+        return web_cinema;
+    }
+
+    public void setWeb_cinema(String web_cinema) {
+        this.web_cinema = web_cinema;
+    }
+
+    public String getAddress_cinema() {
+        return address_cinema;
+    }
+
+    public void setAddress_cinema(String address_cinema) {
+        this.address_cinema = address_cinema;
+    }
+
+    public String getCity_cinema() {
+        return city_cinema;
+    }
+
+    public void setCity_cinema(String city_cinema) {
+        this.city_cinema = city_cinema;
+    }
 
     public String getUsernameUserCinema() {
         return usernameUserCinema;

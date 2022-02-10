@@ -1,25 +1,31 @@
 package com.group09.movies.dto;
 
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-
-public class NewUserSubscriberDto {
-
-    @NotEmpty(message = "Es necesario colocar el usuario")
+public class UserAppDto {
     private String usernameUserCinema;
-
-    @NotEmpty(message = "Es necesario colocar un password")
-    private String passwordUserCinema;
-
-    @NotEmpty(message = "Es necesario colocar el nombre del usuario")
     private String nameUserCinema;
-
     private String surnameUserCinema;
-
-    @Email(message = "El Email no es valido")
-    @NotEmpty(message = "Es necesario colocar el email ")
     private String emailUserCinema;
+    private int TypeUser;
+
+    public UserAppDto(String usernameUserCinema, String nameUserCinema, String surnameUserCinema, String emailUserCinema) {
+        this.usernameUserCinema = usernameUserCinema;
+        this.nameUserCinema = nameUserCinema;
+        this.surnameUserCinema = surnameUserCinema;
+        this.emailUserCinema = emailUserCinema;
+    }
+
+
+
+    public int getTypeUser() {
+        return TypeUser;
+    }
+
+    public void setTypeUser(int typeUser) {
+        TypeUser = typeUser;
+    }
+
+
+
 
     public String getUsernameUserCinema() {
         return usernameUserCinema;
@@ -29,13 +35,6 @@ public class NewUserSubscriberDto {
         this.usernameUserCinema = usernameUserCinema;
     }
 
-    public String getPasswordUserCinema() {
-        return passwordUserCinema;
-    }
-
-    public void setPasswordUserCinema(String passwordUserCinema) {
-        this.passwordUserCinema = passwordUserCinema;
-    }
 
     public String getNameUserCinema() {
         return nameUserCinema;

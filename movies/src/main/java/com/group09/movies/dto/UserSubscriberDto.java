@@ -1,11 +1,11 @@
 package com.group09.movies.dto;
 
-public class UserSubscriber extends UserApp{
+public class UserSubscriberDto extends UserAppDto {
 
     private  int current_points;
 
 
-    public UserSubscriber(UserApp u) {
+    public UserSubscriberDto(UserAppDto u) {
         super(u.getUsernameUserCinema(), u.getNameUserCinema(), u.getSurnameUserCinema(), u.getEmailUserCinema());
     }
     public int getCurrent_points() {

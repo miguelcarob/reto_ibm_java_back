@@ -1,30 +1,20 @@
 package com.group09.movies.dto;
 
-public class UserApp {
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
+public class NewUserAppDTO {
+
+    @NotBlank
     private String usernameUserCinema;
+    @NotBlank
+    private String passwordUserCinema;
+    @NotBlank
     private String nameUserCinema;
+
     private String surnameUserCinema;
+    @Email
     private String emailUserCinema;
-    private int TypeUser;
-
-    public UserApp(String usernameUserCinema, String nameUserCinema, String surnameUserCinema, String emailUserCinema) {
-        this.usernameUserCinema = usernameUserCinema;
-        this.nameUserCinema = nameUserCinema;
-        this.surnameUserCinema = surnameUserCinema;
-        this.emailUserCinema = emailUserCinema;
-    }
-
-
-
-    public int getTypeUser() {
-        return TypeUser;
-    }
-
-    public void setTypeUser(int typeUser) {
-        TypeUser = typeUser;
-    }
-
-
 
 
     public String getUsernameUserCinema() {
@@ -35,6 +25,13 @@ public class UserApp {
         this.usernameUserCinema = usernameUserCinema;
     }
 
+    public String getPasswordUserCinema() {
+        return passwordUserCinema;
+    }
+
+    public void setPasswordUserCinema(String passwordUserCinema) {
+        this.passwordUserCinema = passwordUserCinema;
+    }
 
     public String getNameUserCinema() {
         return nameUserCinema;
