@@ -10,7 +10,8 @@ public class UserCinema {
     @Column(name = "id_user_cinema", nullable = false)
     private Integer id;
 
-    @Column(name = "username_user_cinema", length = 100)
+
+    @Column(name = "username_user_cinema", length = 100,unique = true)
     private String usernameUserCinema;
 
     @Column(name = "password_user_cinema", length = 200)
