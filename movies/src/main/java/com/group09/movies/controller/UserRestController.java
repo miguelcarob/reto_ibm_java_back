@@ -10,6 +10,7 @@ import com.group09.movies.service.impl.SubscriberService;
 import com.group09.movies.service.impl.UserCinemaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
@@ -37,7 +38,7 @@ public class UserRestController {
 
 
 
-    @RequestMapping(value = "/users/login/", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/login/", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> ValidateUser(@Valid @RequestBody UserCinemaLoginDto userCinemaLoginDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity(new Message("No se puede realizar la petición, Error en los Campos Ingresados"), HttpStatus.BAD_REQUEST);
@@ -85,6 +86,7 @@ public class UserRestController {
         return new ResponseEntity(new Message("Usuario no encontrado, o credenciales invalidas"), HttpStatus.UNAUTHORIZED);
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/users/createSubscriber/", method = RequestMethod.POST)
     public ResponseEntity<?> createUserSubscriber(@Valid @RequestBody NewUserSubscriberDto newUserSubscriberDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
