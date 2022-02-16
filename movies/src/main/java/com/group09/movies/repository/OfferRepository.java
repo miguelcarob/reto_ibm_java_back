@@ -1,5 +1,6 @@
 package com.group09.movies.repository;
 
+import com.group09.movies.entity.Cinema;
 import com.group09.movies.entity.Offer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -9,4 +10,6 @@ public interface OfferRepository extends JpaRepository<Offer, Integer> {
 
 
      List<Offer> findByStateOffer(int state);
+
+     List<Offer> findByIdCinema(Cinema cinema);
 }

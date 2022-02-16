@@ -1,8 +1,8 @@
 package com.group09.movies.service.impl;
 
 
-import com.group09.movies.dto.NewOfferDTO;
-import com.group09.movies.dto.UpdateOfferDTO;
+import com.group09.movies.dto.NewOfferDto;
+import com.group09.movies.dto.UpdateOfferDto;
 import com.group09.movies.entity.Cinema;
 import com.group09.movies.entity.Offer;
 import com.group09.movies.entity.OffersSubscriber;
@@ -10,7 +10,6 @@ import com.group09.movies.entity.Subscriber;
 import com.group09.movies.repository.OfferRepository;
 import com.group09.movies.repository.OffersSubscriberRepository;
 import com.group09.movies.repository.SubscriberRepository;
-import com.sun.xml.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +49,15 @@ public class OfferService {
         return offerRepository.findByStateOffer(state);
     }
 
-    public Offer updateOffer(UpdateOfferDTO offer) {
+
+    public List<Offer> getAllByCinema(int idCinema){
+        Cinema c= cinemaService.findCinemaById(idCinema).get();
+        return offerRepository.findByIdCinema(c);
+    }
+
+
+
+    public Offer updateOffer(UpdateOfferDto offer) {
         // #TODO realizar el método
         Optional<Offer> offerUpdate = offerRepository.findById(offer.getId());
         if (offerUpdate.isPresent()) {
@@ -66,7 +73,7 @@ public class OfferService {
         return offerRepository.save(offerUpdate.get());
     }
 
-    public Offer createOffer(NewOfferDTO newOfferDTO) {
+    public Offer createOffer(NewOfferDto newOfferDTO) {
         Optional<Cinema> cinema = cinemaService.findCinemaById(newOfferDTO.getIdCinema());
         if (cinema.isPresent()) {
             Offer offer = new Offer();

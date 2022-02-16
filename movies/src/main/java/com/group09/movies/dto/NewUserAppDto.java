@@ -3,7 +3,7 @@ package com.group09.movies.dto;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-public class NewUserAppDTO {
+public class NewUserAppDto {
 
     @NotBlank
     private String usernameUserCinema;

@@ -21,7 +21,8 @@ public class SubscriberRestController {
 
     @RequestMapping(value = "/subscribers/", method = RequestMethod.GET)
     public ResponseEntity<?> findAllsubscribers() {
-        return new ResponseEntity(subscriberService.getAllSubscribers(), HttpStatus.OK);
+        Message m= new Message(subscriberService.getAllSubscribers(),"200");
+        return new ResponseEntity(m, HttpStatus.OK);
     }
 
 
@@ -29,9 +30,10 @@ public class SubscriberRestController {
     public ResponseEntity<?> getsubscriber(@PathVariable("id") int id) {
 
         try{
-            return new ResponseEntity(subscriberService.FindSubscriberById(id), HttpStatus.OK);
+            Message m = new Message(subscriberService.getAllSubscribers(),"200");
+            return new ResponseEntity(m, HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity(new Message("No se encuentra el subscriptor con la información suministrada"), HttpStatus.FORBIDDEN);
+            return new ResponseEntity(new Message("No se encuentra el subscriptor con la información suministrada","403"), HttpStatus.FORBIDDEN);
         }
     }
 
@@ -42,9 +44,12 @@ public class SubscriberRestController {
         if(subscriberOriginal.isPresent()){
             subscriberOriginal.get().getIdUserCinema().setSurnameUserCinema(subscriber.getIdUserCinema().getSurnameUserCinema());
             subscriberOriginal.get().getIdUserCinema().setNameUserCinema(subscriber.getIdUserCinema().getNameUserCinema());
-            return new ResponseEntity(subscriberService.UpdateSubscriber(subscriberOriginal.get()), HttpStatus.OK);
+
+
+            Message m= new Message(subscriberService.UpdateSubscriber(subscriberOriginal.get()), "200");
+            return new ResponseEntity(m,HttpStatus.OK);
         }
-        return new ResponseEntity(new Message("No se puede actualizar la información del subscriptor"), HttpStatus.FORBIDDEN);
+        return new ResponseEntity(new Message("No se puede actualizar la información del subscriptor","403"), HttpStatus.FORBIDDEN);
     }
 
 

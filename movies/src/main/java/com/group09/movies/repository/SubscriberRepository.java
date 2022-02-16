@@ -11,4 +11,5 @@ public interface SubscriberRepository extends JpaRepository<Subscriber, Integer>
 
 
     Optional<Subscriber> findByIdUserCinema(UserCinema u);
+
 }

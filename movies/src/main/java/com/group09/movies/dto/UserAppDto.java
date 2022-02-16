@@ -5,7 +5,16 @@ public class UserAppDto {
     private String nameUserCinema;
     private String surnameUserCinema;
     private String emailUserCinema;
-    private int TypeUser;
+    private int typeUser;
+    private int user_table;
+
+    public int getUser_table() {
+        return user_table;
+    }
+
+    public void setUser_table(int user_table) {
+        this.user_table = user_table;
+    }
 
     public UserAppDto(String usernameUserCinema, String nameUserCinema, String surnameUserCinema, String emailUserCinema) {
         this.usernameUserCinema = usernameUserCinema;
@@ -17,11 +26,11 @@ public class UserAppDto {
 
 
     public int getTypeUser() {
-        return TypeUser;
+        return typeUser;
     }
 
     public void setTypeUser(int typeUser) {
-        TypeUser = typeUser;
+        this.typeUser = typeUser;
     }
 
 

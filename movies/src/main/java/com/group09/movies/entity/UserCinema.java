@@ -98,4 +98,18 @@ public class UserCinema {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "UserCinema{" +
+                "id=" + id +
+                ", usernameUserCinema='" + usernameUserCinema + '\'' +
+                ", passwordUserCinema='" + passwordUserCinema + '\'' +
+                ", nameUserCinema='" + nameUserCinema + '\'' +
+                ", surnameUserCinema='" + surnameUserCinema + '\'' +
+                ", emailUserCinema='" + emailUserCinema + '\'' +
+                ", typeUserCinema=" + typeUserCinema +
+                ", stateUserCinema=" + stateUserCinema +
+                '}';
+    }
 }

@@ -2,9 +2,9 @@ package com.group09.movies.controller;
 
 import com.group09.movies.dto.*;
 import com.group09.movies.entity.Cinema;
-import com.group09.movies.entity.Film;
 import com.group09.movies.entity.Subscriber;
 import com.group09.movies.entity.UserCinema;
+import com.group09.movies.service.impl.AdminService;
 import com.group09.movies.service.impl.CinemaService;
 import com.group09.movies.service.impl.SubscriberService;
 import com.group09.movies.service.impl.UserCinemaService;
@@ -18,7 +18,6 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -37,6 +36,8 @@ public class UserRestController {
     SubscriberService subscriberService;
 
 
+      @Autowired
+      AdminService adminService;
 
     @RequestMapping(value = "/users/login/", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> ValidateUser(@Valid @RequestBody UserCinemaLoginDto userCinemaLoginDto, BindingResult bindingResult) {
@@ -58,9 +59,14 @@ public class UserRestController {
                 }
                 UserAppDto userApp = new UserAppDto(userCinema1.getUsernameUserCinema(), userCinema1.getNameUserCinema(), userCinema1.getSurnameUserCinema(), userCinema1.getEmailUserCinema());
                 if (userCinema.get().getTypeUserCinema() == 1) {
+                    System.out.println("hola linea 65");
+                    System.out.println(userCinema1);
+                    System.out.println("Hola linea 67");
                     // es un usuario tipo administrador
                     UserAdministratorDto entityUser = new UserAdministratorDto(userApp);
+                    entityUser.setUser_table(adminService.findByIdUserCinema(userCinema1).getId());
                     entityUser.setTypeUser(1);
+
                     return new ResponseEntity(entityUser, HttpStatus.OK);
                 } else if (userCinema.get().getTypeUserCinema() == 2) {
                     // es un usuario tipo Suscriptor
@@ -68,6 +74,7 @@ public class UserRestController {
                     int points=subscriberService.getPointsBySuscriber(userCinema1);
                     entityUser.setCurrent_points(points);
                     entityUser.setTypeUser(2);
+                    entityUser.setUser_table(subscriberService.findByidUserCinema(userCinema1).get().getId());
                     return new ResponseEntity(entityUser, HttpStatus.OK);
                 } else {
                     System.out.println("linea 86");
@@ -79,6 +86,7 @@ public class UserRestController {
                     entityUser.setAddress_cinema(cinema.getAdressCinema());
                     entityUser.setWeb_cinema(cinema.getWebCinema());
                     userApp.setTypeUser(3);
+                    entityUser.setUser_table(cinema.getId());
                     return new ResponseEntity(entityUser, HttpStatus.OK);
                 }
             }
@@ -143,9 +151,9 @@ public class UserRestController {
         userCinema.setTypeUserCinema(3);
         userCinema.setStateUserCinema(1);
         Cinema cinema=new Cinema();
-        cinema.setCityCinema(newUserCinemaDto.getCity_cinema());
-        cinema.setAdressCinema(newUserCinemaDto.getAddress_cinema());
-        cinema.setWebCinema(newUserCinemaDto.getWeb_cinema());
+        cinema.setCityCinema(newUserCinemaDto.getCityCinema());
+        cinema.setAdressCinema(newUserCinemaDto.getAdressCinema());
+        cinema.setWebCinema(newUserCinemaDto.getWebCinema());
         userCinemaService.createCinema(userCinema,cinema);
         return new ResponseEntity(new Message("Se ha creado con exito el usuario"), HttpStatus.OK);
 

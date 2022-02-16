@@ -5,7 +5,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-public class NewOfferDTO {
+public class NewOfferDto {
 
     @NotEmpty(message = "Es necesario colocar la descripcción")
     private String descriptionOffer;

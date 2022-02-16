@@ -22,36 +22,36 @@ public class NewUserCinemaDto {
 
 
     @NotEmpty(message = "Es necesario colocar el Sitio Web ")
-    private String web_cinema;
+    private String webCinema;
 
     @NotEmpty(message = "Es necesario colocar la dirección ")
-    private String address_cinema;
+    private String adressCinema;
 
     @NotEmpty(message = "Es necesario colocar la Ciudad ")
-    private String city_cinema;
+    private String cityCinema;
 
-    public String getWeb_cinema() {
-        return web_cinema;
+    public String getWebCinema() {
+        return webCinema;
     }
 
-    public void setWeb_cinema(String web_cinema) {
-        this.web_cinema = web_cinema;
+    public void setWebCinema(String webCinema) {
+        this.webCinema = webCinema;
     }
 
-    public String getAddress_cinema() {
-        return address_cinema;
+    public String getAdressCinema() {
+        return adressCinema;
     }
 
-    public void setAddress_cinema(String address_cinema) {
-        this.address_cinema = address_cinema;
+    public void setAdressCinema(String adressCinema) {
+        this.adressCinema = adressCinema;
     }
 
-    public String getCity_cinema() {
-        return city_cinema;
+    public String getCityCinema() {
+        return cityCinema;
     }
 
-    public void setCity_cinema(String city_cinema) {
-        this.city_cinema = city_cinema;
+    public void setCityCinema(String cityCinema) {
+        this.cityCinema = cityCinema;
     }
 
     public String getUsernameUserCinema() {
